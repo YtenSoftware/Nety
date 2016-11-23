@@ -26,12 +26,12 @@ else:
     IPADDR = "ipaddress"
     DNSPYTHON = "dnspython3"
 
-setup(name='ciscoconfparse',
+setup(name='Nety',
       version=__ccpversion__,
       description='Parse, Audit, Query, Build, and Modify Cisco IOS-style configurations',
-      url='http://www.pennington.net/py/ciscoconfparse/',
-      author='David Michael Pennington',
-      author_email='mike /|at|\ pennington.net',
+      url='https://github.com/YtenSoftware/Nety/',
+      author='Yten Software',
+      author_email='YtenSoftware@nocer.net',
       license='GPLv3',
       platforms='any',
       keywords='Parse audit query modify Cisco IOS configuration',
