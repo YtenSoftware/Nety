@@ -16,7 +16,7 @@ os:
 
 install:
  - pip install --upgrade -q pip
- - pip install --upgrade -q ciscoconfparse
+ - pip install --upgrade -q nety
 
 
 script: make test
