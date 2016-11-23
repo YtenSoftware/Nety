@@ -112,8 +112,7 @@ Otherwise `download it from PyPi <https://pypi.python.org/pypi/Nety>`_, extract 
 
       python setup.py install
 
-If you're interested in the source, you can always pull from the `github repo`_
-or `bitbucket repo`_:
+If you're interested in the source, you can always pull from the `github repo`_:
 
 
 - From github_:
@@ -210,9 +209,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 
-.. _`github repo`: https://github.com/mpenning/Nety
-
-.. _`bitbucket repo`: https://bitbucket.org/mpenning/Nety
+.. _`github repo`: https://github.com/YtenSoftware/Nety
 
 .. _bitbucket: https://bitbucket.org/mpenning/Nety
 
@@ -220,7 +217,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _mercurial: http://mercurial.selenic.com/
 
-.. _`github bug tracker`: https://github.com/mpenning/Nety/issues
+.. _`github bug tracker`: https://github.com/YtenSoftware/Nety/issues
 
 .. _`regular expressions`: http://docs.python.org/2/howto/regex.html
 
