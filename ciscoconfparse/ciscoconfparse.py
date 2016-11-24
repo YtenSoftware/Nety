@@ -31,7 +31,7 @@ from models_asa import ASAAclLine
 
 from models_junos import JunosCfgLine
 
-from version import __version__ as __ccpversion__
+from version import __version__ as __netyversion__
 
 
 """ ciscoconfparse.py - Parse, Query, Build, and Modify IOS-style configurations
@@ -55,10 +55,10 @@ from version import __version__ as __ccpversion__
 """
 
 ## Docstring props: http://stackoverflow.com/a/1523456/667301
-__version__ = __ccpversion__
-__email__ = "mike /at\ pennington [dot] net"
-__author__ = "David Michael Pennington <{0}>".format(__email__)
-__copyright__ = "2007-{0}, {1}".format(time.strftime('%Y'), __author__)
+__version__ = __netyversion__
+__email__ = "YtenSoftware@nocer.net"
+__author__ = "Yten Software <{0}>".format(__email__)
+__copyright__ = "2015-{0}, {1}".format(time.strftime('%Y'), __author__)
 __license__ = "GPLv3"
 __status__ = "Production"
 
