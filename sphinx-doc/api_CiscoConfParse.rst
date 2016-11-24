@@ -3,7 +3,7 @@
 CiscoConfParse Object
 ---------------------
 
-.. autoclass:: ciscoconfparse.CiscoConfParse
+.. autoclass:: nety.CiscoConfParse
       :members:
       :undoc-members:
       :inherited-members:

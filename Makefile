@@ -1,6 +1,6 @@
 PY27DEVTESTS=cd tests;find ./* -name 'test_*.py' -exec /opt/virtual_env/py27_test/bin/py.test -s {} \;
 PY34DEVTESTS=cd tests;find ./* -name 'test_*.py' -exec /opt/virtual_env/py34_test/bin/py.test -s {} \;
-BITBUCKETPUSH = $(shell bash -c 'read -s -p "Bitbucket Password: " pwd; hg push "https://mpenning:$$pwd@bitbucket.org/mpenning/ciscoconfparse"')
+BITBUCKETPUSH = $(shell bash -c 'read -s -p "Bitbucket Password: " pwd; hg push "https://mpenning:$$pwd@bitbucket.org/mpenning/nety"')
 DOCHOST ?= $(shell bash -c 'read -p "documentation host: " dochost; echo $$dochost')
 
 .PHONY: package
@@ -15,8 +15,8 @@ pypi:
 repo-push:
 	cp .hgrc .hg/
 	hg bookmark -f master
-	-hg push ssh://hg@bitbucket.org/mpenning/ciscoconfparse
-	-hg push git+ssh://git@github.com:mpenning/ciscoconfparse.git
+	-hg push ssh://hg@bitbucket.org/mpenning/nety
+	-hg push git+ssh://git@github.com:mpenning/nety.git
 .PHONY: tutorial
 tutorial:
 	rst2html5 --jquery --reveal-js --pretty-print-code --embed-stylesheet --embed-content --embed-images tutorial/ccp_tutorial.rst > tutorial/ccp_tutorial.html
@@ -58,24 +58,24 @@ devpkgs:
 	pip install --upgrade ipaddr
 .PHONY: flake
 flake:
-	flake8 --ignore E501,E226,E225,E221,E303,E302,E265,E128,E125,E124,E41,W291 --max-complexity 10 ciscoconfparse | less
+	flake8 --ignore E501,E226,E225,E221,E303,E302,E265,E128,E125,E124,E41,W291 --max-complexity 10 nety | less
 .PHONY: coverage
 coverage:
 	@echo "[[[ py.test Coverage ]]]"
-	cd tests;py.test --cov-report term-missing --cov=ciscoconfparse.py -s -v
+	cd tests;py.test --cov-report term-missing --cov=nety.py -s -v
 .PHONY: devtest
 devtest:
 	@echo "[[[ Python 2.7 tests ]]]"
-	/opt/virtual_env/py27_test/bin/python ciscoconfparse/ciscoconfparse.py;
+	/opt/virtual_env/py27_test/bin/python nety/nety.py;
 	$(PY27DEVTESTS)
 	#@echo "[[[ Python 3.4 tests ]]]"
-	#/opt/virtual_env/py34_test/bin/python ciscoconfparse/ciscoconfparse.py
+	#/opt/virtual_env/py34_test/bin/python nety/nety.py
 	$(PY34DEVTESTS)
 	make clean
 .PHONY: test
 test:
 	# Run the doc tests and unit tests
-	cd tests; python ../ciscoconfparse/ciscoconfparse.py; ./runtests.sh
+	cd tests; python ../nety/nety.py; ./runtests.sh
 .PHONY: clean
 clean:
 	find ./* -name '*.pyc' -exec rm {} \;
@@ -86,7 +86,7 @@ clean:
 	@# remove all the MockSSH keys
 	-find ./* -name '*.key' -exec rm {} \;
 	-rm -rf .eggs/
-	-rm -rf dist/ ciscoconfparse.egg-info/ setuptools*
+	-rm -rf dist/ nety.egg-info/ setuptools*
 .PHONY: help
 help:
 	@# An @ sign prevents outputting the command itself to stdout

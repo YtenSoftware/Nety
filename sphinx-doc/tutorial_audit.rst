@@ -38,7 +38,7 @@ Next, we build this script to read and change the config:
 
 .. code-block:: python
 
-   from ciscoconfparse import CiscoConfParse
+   from nety import CiscoConfParse
 
    def standardize_intfs(parse):
 

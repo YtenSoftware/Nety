@@ -34,7 +34,7 @@ from models_junos import JunosCfgLine
 from version import __version__ as __netyversion__
 
 
-""" ciscoconfparse.py - Parse, Query, Build, and Modify IOS-style configurations
+""" nety.py - Parse, Query, Build, and Modify IOS-style configurations
      Copyright (C) 2007-2015 David Michael Pennington
 
      This program is free software: you can redistribute it and/or modify
@@ -85,20 +85,20 @@ class CiscoConfParse(object):
                - debug (bool): ``debug`` defaults to False, and should be kept that way unless you're working on a very tricky config parsing problem.  Debug output is not particularly friendly
                - factory (bool): ``factory`` defaults to False; if set ``True``, it enables a beta-quality configuration line classifier.
                - linesplit_rgx (str): ``linesplit_rgx`` is used when parsing configuration files to find where new configuration lines are.  It is best to leave this as the default, unless you're working on a system that uses unusual line terminations (for instance something besides Unix, OSX, or Windows)
-               - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, ciscoconfparse ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration (ref: Github Issue #2), or you are parsing configurations which naturally have blank lines (such as Cisco Nexus configurations).
+               - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, nety ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration (ref: Github Issue #2), or you are parsing configurations which naturally have blank lines (such as Cisco Nexus configurations).
                - syntax (str): ``syntax`` defaults to 'ios'; You can choose from the following values: ios, asa
 
            Attributes:
                - comment_delimiter (str): A string containing the comment-delimiter
-               - ConfigObjs (:class:`~ciscoconfparse.IOSConfigList`) : A custom list, which contains all parsed :class:`~models_cisco.IOSCfgLine` instances.
+               - ConfigObjs (:class:`~nety.IOSConfigList`) : A custom list, which contains all parsed :class:`~models_cisco.IOSCfgLine` instances.
                - all_parents (list) : A list of all parent :class:`~models_cisco.IOSCfgLine` instances.
                - last_index (int) : An integer with the last index in ``ConfigObjs``
            Returns:
-               - An instance of a :class:`~ciscoconfparse.CiscoConfParse` object
+               - An instance of a :class:`~nety.CiscoConfParse` object
 
 
            This example illustrates how to parse a simple Cisco IOS configuration
-           with :class:`~ciscoconfparse.CiscoConfParse` into a variable called 
+           with :class:`~nety.CiscoConfParse` into a variable called 
            ``parse``.  This example also illustrates what the ``ConfigObjs`` 
            and ``ioscfg`` attributes contain.
 
@@ -234,7 +234,7 @@ class CiscoConfParse(object):
     @property
     def ioscfg(self):
         """A list containing all text configuration statements"""
-        ## I keep this here to emulate the legacy ciscoconfparse behavior
+        ## I keep this here to emulate the legacy nety behavior
         return list(map(attrgetter('text'), self.ConfigObjs))
 
     @property
@@ -243,43 +243,43 @@ class CiscoConfParse(object):
         return self.ConfigObjs
 
     def atomic(self):
-        """Call :func:`~ciscoconfparse.CiscoConfParse.atomic` to manually fix 
+        """Call :func:`~nety.CiscoConfParse.atomic` to manually fix 
         up ``ConfigObjs`` relationships 
         after modifying a parsed configuration.  This method is slow; try to 
-        batch calls to :func:`~ciscoconfparse.CiscoConfParse.atomic()` if 
+        batch calls to :func:`~nety.CiscoConfParse.atomic()` if 
         possible.
 
         .. warning::
 
            If you modify a configuration after parsing it with 
-           :class:`~ciscoconfparse.CiscoConfParse`, you *must* call 
-           :func:`~ciscoconfparse.CiscoConfParse.commit` or 
-           :func:`~ciscoconfparse.CiscoConfParse.atomic` before searching 
+           :class:`~nety.CiscoConfParse`, you *must* call 
+           :func:`~nety.CiscoConfParse.commit` or 
+           :func:`~nety.CiscoConfParse.atomic` before searching 
            the configuration again with methods such as 
-           :func:`~ciscoconfparse.CiscoConfParse.find_objects` or 
-           :func:`~ciscoconfparse.CiscoConfParse.find_lines`.  Failure to 
-           call :func:`~ciscoconfparse.CiscoConfParse.commit` or 
-           :func:`~ciscoconfparse.CiscoConfParse.atomic` on config 
+           :func:`~nety.CiscoConfParse.find_objects` or 
+           :func:`~nety.CiscoConfParse.find_lines`.  Failure to 
+           call :func:`~nety.CiscoConfParse.commit` or 
+           :func:`~nety.CiscoConfParse.atomic` on config 
            modifications could lead to unexpected search results.
         """
         self.ConfigObjs._bootstrap_from_text()
 
     def commit(self):
-        """Alias for calling the :func:`~ciscoconfparse.CiscoConfParse.atomic` 
+        """Alias for calling the :func:`~nety.CiscoConfParse.atomic` 
         method.  This method is slow; try to batch calls to 
-        :func:`~ciscoconfparse.CiscoConfParse.commit()` if possible.
+        :func:`~nety.CiscoConfParse.commit()` if possible.
 
         .. warning::
 
            If you modify a configuration after parsing it with 
-           :class:`~ciscoconfparse.CiscoConfParse`, you *must* call 
-           :func:`~ciscoconfparse.CiscoConfParse.commit` or 
-           :func:`~ciscoconfparse.CiscoConfParse.atomic` before searching 
+           :class:`~nety.CiscoConfParse`, you *must* call 
+           :func:`~nety.CiscoConfParse.commit` or 
+           :func:`~nety.CiscoConfParse.atomic` before searching 
            the configuration again with methods such as 
-           :func:`~ciscoconfparse.CiscoConfParse.find_objects` or 
-           :func:`~ciscoconfparse.CiscoConfParse.find_lines`.  Failure to 
-           call :func:`~ciscoconfparse.CiscoConfParse.commit` or 
-           :func:`~ciscoconfparse.CiscoConfParse.atomic` on config 
+           :func:`~nety.CiscoConfParse.find_objects` or 
+           :func:`~nety.CiscoConfParse.find_lines`.  Failure to 
+           call :func:`~nety.CiscoConfParse.commit` or 
+           :func:`~nety.CiscoConfParse.atomic` on config 
            modifications could lead to unexpected search results.
         """
         self.atomic()
@@ -351,7 +351,7 @@ class CiscoConfParse(object):
             - exactmatch (bool): Defaults to True; when True, this option requires ``intfspec`` match the whole interface name and number.
 
         Returns:
-            - list.  A list of matching :class:`~ciscoconfparse.IOSIntfLine` objects
+            - list.  A list of matching :class:`~nety.IOSIntfLine` objects
 
         .. code-block:: python
            :emphasize-lines: 12,15
@@ -395,7 +395,7 @@ class CiscoConfParse(object):
         matches ``dnaspec`` and return the :class:`~models_cisco.IOSCfgLine` 
         objects in a python list.  
 
-        .. note:: :func:`~ciscoconfparse.CiscoConfParse.find_objects_dna` requires the configuration to be parsed with factory=True
+        .. note:: :func:`~nety.CiscoConfParse.find_objects_dna` requires the configuration to be parsed with factory=True
         
 
         Args:
@@ -404,7 +404,7 @@ class CiscoConfParse(object):
             - exactmatch (bool): Defaults to False.  When set True, this option requires ``dnaspec`` match the whole configuration line, instead of a portion of the configuration line.
 
         Returns:
-            - list.  A list of matching :class:`~ciscoconfparse.IOSCfgLine` objects
+            - list.  A list of matching :class:`~nety.IOSCfgLine` objects
 
         .. code-block:: python
            :emphasize-lines: 8
@@ -440,13 +440,13 @@ class CiscoConfParse(object):
         """Find all :class:`~models_cisco.IOSCfgLine` objects whose text 
         matches ``linespec`` and return the :class:`~models_cisco.IOSCfgLine` 
         objects in a python list.  
-        :func:`~ciscoconfparse.CiscoConfParse.find_objects` is similar to 
-        :func:`~ciscoconfparse.CiscoConfParse.find_lines`; however, the former 
+        :func:`~nety.CiscoConfParse.find_objects` is similar to 
+        :func:`~nety.CiscoConfParse.find_lines`; however, the former 
         returns a list of :class:`~models_cisco.IOSCfgLine` objects, while the 
         latter returns a list of text configuration statements.  Going 
         forward, I strongly encourage people to start using 
-        :func:`~ciscoconfparse.CiscoConfParse.find_objects` instead of 
-        :func:`~ciscoconfparse.CiscoConfParse.find_lines`.
+        :func:`~nety.CiscoConfParse.find_objects` instead of 
+        :func:`~nety.CiscoConfParse.find_lines`.
 
         Args:
             - linespec (str): A string or python regular expression, which should be matched
@@ -455,11 +455,11 @@ class CiscoConfParse(object):
             - ignore_ws (bool): boolean that controls whether whitespace is ignored.  Default is False.
 
         Returns:
-            - list.  A list of matching :class:`~ciscoconfparse.IOSCfgLine` objects
+            - list.  A list of matching :class:`~nety.IOSCfgLine` objects
 
         This example illustrates the difference between 
-        :func:`~ciscoconfparse.CiscoConfParse.find_objects` and 
-        :func:`~ciscoconfparse.CiscoConfParse.find_lines`.
+        :func:`~nety.CiscoConfParse.find_objects` and 
+        :func:`~nety.CiscoConfParse.find_lines`.
 
         .. code-block:: python
            :emphasize-lines: 12,15
@@ -552,7 +552,7 @@ class CiscoConfParse(object):
         .. code-block:: python
            :emphasize-lines: 11
 
-           >>> from ciscoconfparse import CiscoConfParse
+           >>> from nety import CiscoConfParse
            >>> config = ['username ddclient password 7 107D3D232342041E3A',
            ...           'archive',
            ...           ' log config',
@@ -625,7 +625,7 @@ class CiscoConfParse(object):
         .. code-block:: python
            :emphasize-lines: 11
 
-           >>> from ciscoconfparse import CiscoConfParse
+           >>> from nety import CiscoConfParse
            >>> config = ['username ddclient password 7 107D3D232342041E3A',
            ...           'archive',
            ...           ' log config',
@@ -712,7 +712,7 @@ class CiscoConfParse(object):
         .. code-block:: python
            :emphasize-lines: 22,25
 
-           >>> from ciscoconfparse import CiscoConfParse
+           >>> from nety import CiscoConfParse
            >>> config = ['!', 
            ...           'policy-map EXTERNAL_CBWFQ', 
            ...           ' class IP_PREC_HIGH', 
@@ -783,7 +783,7 @@ class CiscoConfParse(object):
         Returns:
             - list.  A list of matching parent :class:`~models_cisco.IOSCfgLine` objects
 
-        This example uses :func:`~ciscoconfparse.find_objects_w_child()` to 
+        This example uses :func:`~nety.find_objects_w_child()` to 
         find all ports that are members of access vlan 300 in following 
         config...
 
@@ -1420,7 +1420,7 @@ class CiscoConfParse(object):
         .. code-block:: python
            :emphasize-lines: 23
 
-           >>> from ciscoconfparse import CiscoConfParse
+           >>> from nety import CiscoConfParse
            >>> config = ['!', 
            ...           'policy-map EXTERNAL_CBWFQ', 
            ...           ' description implement an EXTERNAL_CBWFQ policy',
@@ -1500,7 +1500,7 @@ class CiscoConfParse(object):
         .. code-block:: python
            :emphasize-lines: 13
 
-           >>> from ciscoconfparse import CiscoConfParse
+           >>> from nety import CiscoConfParse
            >>> config = ['!', 
            ...           'interface GigabitEthernet1/1',
            ...           ' description {I have a broken storm-control config}',
@@ -1802,7 +1802,7 @@ class CiscoConfParse(object):
             - linespec (str): A regular expression, which filters lines to be diff'd
 
         Kwargs:
-            - uncfgspec (str): A regular expression, which is used to unconfigure lines.  When ciscoconfparse removes a line, it takes the entire portion of the line that matches ``uncfgspec``, and prepends "no" to it.
+            - uncfgspec (str): A regular expression, which is used to unconfigure lines.  When nety removes a line, it takes the entire portion of the line that matches ``uncfgspec``, and prepends "no" to it.
             - ignore_order (bool): Indicates whether the configuration should be reordered to minimize the number of diffs.  Default: True (usually it's a good idea to leave ``ignore_order`` True, except for ACL comparisions)
             - remove_lines (bool): Indicates whether the lines which are *not* in ``cfgspec`` should be removed.  Default: True.  When ``remove_lines`` is True, all other config lines matching the linespec that are *not* listed in the cfgspec will be removed with the uncfgspec regex.
             - debug (bool): Miscellaneous debugging; Default: False
@@ -2187,10 +2187,10 @@ class IOSConfigList(MutableSequence):
             - data (list): A list of parsed :class:`~models_cisco.IOSCfgLine` objects
             - comment (str): A comment delimiter.  This should only be changed when parsing non-Cisco IOS configurations, which do not use a !  as the comment delimiter.  ``comment`` defaults to '!'
             - debug (bool): ``debug`` defaults to False, and should be kept that way unless you're working on a very tricky config parsing problem.  Debug output is not particularly friendly
-            - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, ciscoconfparse ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration (ref: Github Issue #2).
+            - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, nety ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration (ref: Github Issue #2).
 
         Returns:
-           - An instance of an :class:`~ciscoconfparse.IOSConfigList` object.
+           - An instance of an :class:`~nety.IOSConfigList` object.
 
         """
         #data = kwargs.get('data', None)
@@ -2519,7 +2519,7 @@ class IOSConfigList(MutableSequence):
             pass
         if childobj.is_comment and (_list[idx-1].indent>indent):
             ## I *really* hate making this exception, but legacy 
-            ##   ciscoconfparse never marked a comment as a child 
+            ##   nety never marked a comment as a child 
             ##   when the line immediately above it was indented more
             ##   than the comment line
             pass
@@ -2574,7 +2574,7 @@ class ASAConfigList(MutableSequence):
             - data (list): A list of parsed :class:`~models_asa.ASACfgLine` objects
             - comment (str): A comment delimiter.  This should only be changed when parsing non-Cisco IOS configurations, which do not use a !  as the comment delimiter.  ``comment`` defaults to '!'
             - debug (bool): ``debug`` defaults to False, and should be kept that way unless you're working on a very tricky config parsing problem.  Debug output is not particularly friendly
-            - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, ciscoconfparse ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration.
+            - ignore_blank_lines (bool): ``ignore_blank_lines`` defaults to True; when this is set True, nety ignores blank configuration lines.  You might want to set ``ignore_blank_lines`` to False if you intentionally use blank lines in your configuration.
 
         Attributes:
             - names (dict): A Python dictionary, which maps a Cisco ASA name to a string representing the address
@@ -2583,7 +2583,7 @@ class ASAConfigList(MutableSequence):
             - access_list (dict): A Python dictionary, which maps a Cisco ASA access-list name to the list of ACEs for that ACL
  
         Returns:
-            - An instance of an :class:`~ciscoconfparse.ASAConfigList` object.
+            - An instance of an :class:`~nety.ASAConfigList` object.
  
         """
         super(ASAConfigList, self).__init__()
@@ -2841,7 +2841,7 @@ class ASAConfigList(MutableSequence):
                 .format(parentobj.children))
         if childobj.is_comment and (_list[idx-1].indent>indent):
             ## I *really* hate making this exception, but legacy 
-            ##   ciscoconfparse never marked a comment as a child 
+            ##   nety never marked a comment as a child 
             ##   when the line immediately above it was indented more
             ##   than the comment line
             pass
@@ -3052,5 +3052,5 @@ if __name__ == '__main__':
         for line in diff:
             print(line)
     else:
-        raise RuntimeError("FATAL: ciscoconfparse was called with unknown" + \
+        raise RuntimeError("FATAL: nety was called with unknown" + \
             " parameters")

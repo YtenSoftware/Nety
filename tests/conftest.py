@@ -2,12 +2,12 @@ import platform
 import sys
 import os
 THIS_DIR = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(os.path.abspath(THIS_DIR), "../ciscoconfparse/"))
+sys.path.insert(0, os.path.join(os.path.abspath(THIS_DIR), "../nety/"))
 sys.path.insert(0, os.path.abspath(THIS_DIR))
 
 
 import pytest
-from ciscoconfparse import CiscoConfParse
+from nety import CiscoConfParse
 
 
 c01 = """policy-map QOS_1
