@@ -10,6 +10,10 @@ Nety - Currently under heavy work, don't use it for now!
    :target: https://pypi.python.org/pypi/Nety/
    :alt: Version
 
+.. image:: https://img.shields.io/github/tag/YtenSoftware/Nety.svg?style=flat-square   
+   :target: https://github.com/YtenSoftware/Nety
+   :alt: GitHub Version
+
 .. image:: http://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square
    :target: https://www.gnu.org/copyleft/gpl.html
    :alt: License
@@ -21,6 +25,9 @@ Nety - Currently under heavy work, don't use it for now!
 .. image:: https://img.shields.io/github/stars/YtenSoftware/Nety.svg?style=flat-square
    :target: https://github.com/YtenSoftware/Nety/stargazers
    :alt: Stars
+
+.. image:: https://img.shields.io/badge/Yten-Software-blue.svg?style=flat-square
+   :alt: YtenSoftware
 
 .. contents:: Table of Contents
 
