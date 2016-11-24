@@ -1,6 +1,6 @@
-==============
+========================================================
 Nety - Currently under heavy work, don't use it for now!
-==============
+========================================================
 
 .. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
    :target: https://travis-ci.org/YtenSoftware/Nety
@@ -18,7 +18,8 @@ Nety - Currently under heavy work, don't use it for now!
    :target: https://pypi.python.org/pypi/Nety
    :alt: Downloads
 
-.. contents::
+
+.. contents:: Table of Contents
 
 .. _introduction:
 
@@ -37,8 +38,8 @@ The library examines an IOS-style config and breaks it into a set of linked
 parent / child relationships.  You can perform complex queries about these 
 relationships.
 
-.. image:: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_overview_75pct.png
-   :target: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_overview_75pct.png
+.. image:: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_parent_child.png
+   :target: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_parent_child.png
    :alt: Nety Parent / Child relationships
 
 
