@@ -1109,21 +1109,3 @@ def parse_a02_factory(request):
     parse_a02_factory = CiscoConfParse(a02, syntax='asa', factory=True)
 
     yield parse_a02_factory
-
-@pytest.mark.skipif(sys.version_info[0]>=3,
-    reason="No Python3 MockSSH support")
-@pytest.mark.skipif('windows' in platform.system().lower(),
-    reason="No Windows MockSSH support")
-@pytest.yield_fixture(scope='session')
-def cisco_sshd_mocked(request):
-    """Mock Cisco IOS SSH"""
-    from fixtures.devices.mock_cisco import start_cisco_mock, stop_cisco_mock
-
-    try:
-        ## Start the SSH Server
-        start_cisco_mock()
-        yield True
-    except:
-        yield False
-        stop_cisco_mock()
-    stop_cisco_mock()

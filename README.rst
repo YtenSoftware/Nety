@@ -1,24 +1,35 @@
-==============
-Nety
-==============
+========================================================
+Nety - Currently under heavy work, don't use it for now!
+========================================================
 
-.. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
+.. image:: https://img.shields.io/travis/YtenSoftware/Nety/master.svg?style=flat-square
    :target: https://travis-ci.org/YtenSoftware/Nety
    :alt: Travis CI Status
 
-.. image:: https://img.shields.io/pypi/v/Nety.svg
+.. image:: https://img.shields.io/pypi/v/Nety.svg?style=flat-square
    :target: https://pypi.python.org/pypi/Nety/
    :alt: Version
 
-.. image:: http://img.shields.io/badge/license-GPLv3-blue.svg
+.. image:: https://img.shields.io/github/tag/YtenSoftware/Nety.svg?style=flat-square   
+   :target: https://github.com/YtenSoftware/Nety
+   :alt: GitHub Version
+
+.. image:: http://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square
    :target: https://www.gnu.org/copyleft/gpl.html
    :alt: License
 
-.. image:: https://img.shields.io/pypi/dm/Nety.svg
-   :target: https://pypi.python.org/pypi/Nety
-   :alt: Downloads
+.. image:: https://img.shields.io/github/issues/YtenSoftware/Nety.svg?style=flat-square
+   :target: https://github.com/YtenSoftware/Nety/issues
+   :alt: Issues
 
-.. contents::
+.. image:: https://img.shields.io/github/stars/YtenSoftware/Nety.svg?style=flat-square
+   :target: https://github.com/YtenSoftware/Nety/stargazers
+   :alt: Stars
+
+.. image:: https://img.shields.io/badge/Yten-Software-blue.svg?style=flat-square
+   :alt: YtenSoftware
+
+.. contents:: Table of Contents
 
 .. _introduction:
 
@@ -37,8 +48,8 @@ The library examines an IOS-style config and breaks it into a set of linked
 parent / child relationships.  You can perform complex queries about these 
 relationships.
 
-.. image:: https://raw.githubusercontent.com/mpenning/Nety/master/sphinx-doc/_static/Nety_overview_75pct.png
-   :target: https://raw.githubusercontent.com/mpenning/Nety/master/sphinx-doc/_static/Nety_overview_75pct.png
+.. image:: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_parent_child.png
+   :target: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_parent_child.png
    :alt: Nety Parent / Child relationships
 
 
@@ -69,7 +80,7 @@ Nety also handles anything that has a Cisco IOS style of configuration, which in
 Docs
 ====
 
-- The latest copy of the docs are `archived on the web <http://www.pennington.net/py/Nety/>`_
+- You can find the HTML Docs `online <https://netwrk.ch/nety/>`_
 - There is also a `Nety Tutorial <http://pennington.net/tutorial/Nety/ccp_tutorial.html>`_
 
 .. _Pre-Requisites:
@@ -163,8 +174,7 @@ Unit-Tests
 
 Click the image below for details; the current build status is:
 
-.. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
-   :align: center
+.. image:: https://img.shields.io/travis/YtenSoftware/Nety/master.svg?style=flat-square
    :target: https://travis-ci.org/YtenSoftware/Nety
    :alt: Travis CI Status
 
@@ -195,13 +205,13 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _`pypy JIT`: http://pypy.org/
 
-.. _`Github Issue #13`: https://github.com/mpenning/Nety/issues/13
+.. _`Github Issue #13`: https://github.com/mpenning/CiscoConfParse/issues/13
 
-.. _`Github Issue #14`: https://github.com/mpenning/Nety/issues/14
+.. _`Github Issue #14`: https://github.com/mpenning/CiscoConfParse/issues/14
 
-.. _`Github Issue #17`: https://github.com/mpenning/Nety/issues/17
+.. _`Github Issue #17`: https://github.com/mpenning/CiscoConfParse/issues/17
 
-.. _`brace-delimited configurations`: https://github.com/mpenning/Nety/blob/master/configs/sample_01.junos
+.. _`brace-delimited configurations`: https://github.com/YtenSoftware/Nety/blob/master/configs/sample_01.junos
 
 .. _setuptools: https://pypi.python.org/pypi/setuptools
 
@@ -211,9 +221,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _`github repo`: https://github.com/YtenSoftware/Nety
 
-.. _bitbucket: https://bitbucket.org/mpenning/Nety
-
-.. _github: https://github.com/mpenning/Nety
+.. _github: https://github.com/YtenSoftware/Nety
 
 .. _mercurial: http://mercurial.selenic.com/
 
