@@ -99,7 +99,7 @@ Alternatively you can install with pip_: ::
 If you have a specific version of nety in mind, you can specify that
 at the command-line ::
 
-      pip install nety==1.2.39
+      pip install nety==1.3.0
 
 
 Install with setuptools
@@ -113,7 +113,7 @@ If you don't have pip_, you can use setuptools_...  ::
 If you have a specific version of nety in mind, you can specify that
 at the command-line ::
 
-      easy_install -U nety==1.2.39
+      easy_install -U nety==1.3.0
 
 Install from the source
 ~~~~~~~~~~~~~~~~~~~~~~~
