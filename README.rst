@@ -2,22 +2,25 @@
 Nety - Currently under heavy work, don't use it for now!
 ========================================================
 
-.. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
+.. image:: https://img.shields.io/travis/YtenSoftware/Nety/master.svg?style=flat-square
    :target: https://travis-ci.org/YtenSoftware/Nety
    :alt: Travis CI Status
 
-.. image:: https://img.shields.io/pypi/v/Nety.svg
+.. image:: https://img.shields.io/pypi/v/Nety.svg?style=flat-square
    :target: https://pypi.python.org/pypi/Nety/
    :alt: Version
 
-.. image:: http://img.shields.io/badge/license-GPLv3-blue.svg
+.. image:: http://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square
    :target: https://www.gnu.org/copyleft/gpl.html
    :alt: License
 
-.. image:: https://img.shields.io/pypi/dm/Nety.svg
-   :target: https://pypi.python.org/pypi/Nety
-   :alt: Downloads
+.. image:: https://img.shields.io/github/issues/YtenSoftware/Nety.svg?style=flat-square
+   :target: https://github.com/YtenSoftware/Nety/issues
+   :alt: Issues
 
+.. image:: https://img.shields.io/github/stars/YtenSoftware/Nety.svg?style=flat-square
+   :target: https://github.com/YtenSoftware/Nety/stargazers
+   :alt: Stars
 
 .. contents:: Table of Contents
 
