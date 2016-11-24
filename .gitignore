@@ -8,3 +8,5 @@ tags
 nety.egg-*/
 .eggs/*
 .cache/*
+.coverage
+.DS_Store
