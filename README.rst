@@ -1,5 +1,5 @@
 ==============
-Nety
+Nety - Currently under heavy work, don't use it for now!
 ==============
 
 .. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
@@ -37,8 +37,8 @@ The library examines an IOS-style config and breaks it into a set of linked
 parent / child relationships.  You can perform complex queries about these 
 relationships.
 
-.. image:: https://raw.githubusercontent.com/mpenning/Nety/master/sphinx-doc/_static/Nety_overview_75pct.png
-   :target: https://raw.githubusercontent.com/mpenning/Nety/master/sphinx-doc/_static/Nety_overview_75pct.png
+.. image:: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_overview_75pct.png
+   :target: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_overview_75pct.png
    :alt: Nety Parent / Child relationships
 
 
@@ -69,7 +69,7 @@ Nety also handles anything that has a Cisco IOS style of configuration, which in
 Docs
 ====
 
-- The latest copy of the docs are `archived on the web <http://www.pennington.net/py/Nety/>`_
+- You can find the HTML Docs `online <https://netwrk.ch/nety/>`_
 - There is also a `Nety Tutorial <http://pennington.net/tutorial/Nety/ccp_tutorial.html>`_
 
 .. _Pre-Requisites:
@@ -195,13 +195,13 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _`pypy JIT`: http://pypy.org/
 
-.. _`Github Issue #13`: https://github.com/mpenning/Nety/issues/13
+.. _`Github Issue #13`: https://github.com/mpenning/CiscoConfParse/issues/13
 
-.. _`Github Issue #14`: https://github.com/mpenning/Nety/issues/14
+.. _`Github Issue #14`: https://github.com/mpenning/CiscoConfParse/issues/14
 
-.. _`Github Issue #17`: https://github.com/mpenning/Nety/issues/17
+.. _`Github Issue #17`: https://github.com/mpenning/CiscoConfParse/issues/17
 
-.. _`brace-delimited configurations`: https://github.com/mpenning/Nety/blob/master/configs/sample_01.junos
+.. _`brace-delimited configurations`: https://github.com/YtenSoftware/Nety/blob/master/configs/sample_01.junos
 
 .. _setuptools: https://pypi.python.org/pypi/setuptools
 
@@ -211,9 +211,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _`github repo`: https://github.com/YtenSoftware/Nety
 
-.. _bitbucket: https://bitbucket.org/mpenning/Nety
-
-.. _github: https://github.com/mpenning/Nety
+.. _github: https://github.com/YtenSoftware/Nety
 
 .. _mercurial: http://mercurial.selenic.com/
 
