@@ -174,8 +174,7 @@ Unit-Tests
 
 Click the image below for details; the current build status is:
 
-.. image:: https://travis-ci.org/YtenSoftware/Nety.png?branch=master
-   :align: center
+.. image:: https://img.shields.io/travis/YtenSoftware/Nety/master.svg?style=flat-square
    :target: https://travis-ci.org/YtenSoftware/Nety
    :alt: Travis CI Status
 
