@@ -1,7 +1,7 @@
 from operator import methodcaller
 import re
 
-from ciscoconfparse import CiscoConfParse
+from nety import CiscoConfParse
 
 def vlan_intf_dict(parse):
     """Return an integer vlan number to IP address string mapping"""

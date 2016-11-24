@@ -1,4 +1,4 @@
-Welcome to ciscoconfparse's documentation!
+Welcome to nety's documentation!
 ==========================================
 
 Contents:

@@ -1,9 +1,9 @@
 ================================================
-:class:`~ciscoconfparse.CiscoConfParse` Tutorial
+:class:`~nety.CiscoConfParse` Tutorial
 ================================================
 
 This is a brief tutorial which will cover the features that most 
-:class:`~ciscoconfparse.CiscoConfParse` users care about.  We make a couple 
+:class:`~nety.CiscoConfParse` users care about.  We make a couple 
 of assumptions throughout this tutorial...
 
 - You already know a scripting language like Python or Perl

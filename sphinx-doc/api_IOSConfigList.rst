@@ -3,7 +3,7 @@
 IOSConfigList Object
 --------------------
 
-.. autoclass:: ciscoconfparse.IOSConfigList
+.. autoclass:: nety.IOSConfigList
       :members:
       :inherited-members:
 

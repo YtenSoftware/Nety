@@ -201,7 +201,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _Python: http://python.org/
 
-.. _CiscoConfParse: https://github.com/mpenning/ciscoconfparse
+.. _CiscoConfParse: https://github.com/mpenning/nety
 
 .. _`pypy JIT`: http://pypy.org/
 

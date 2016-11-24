@@ -1,1 +1,1 @@
-from ciscoconfparse.version import __version__, __version_tuple__
+from nety.version import __version__, __version_tuple__

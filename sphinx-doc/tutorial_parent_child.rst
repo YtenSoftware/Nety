@@ -1,11 +1,11 @@
 ====================================================
-:class:`~ciscoconfparse.CiscoConfParse` Fundamentals
+:class:`~nety.CiscoConfParse` Fundamentals
 ====================================================
 
 IOS Parent-child relationships
 ------------------------------
 
-:class:`~ciscoconfparse.CiscoConfParse()` reads an IOS configuration and breaks 
+:class:`~nety.CiscoConfParse()` reads an IOS configuration and breaks 
 it into a list of parent-child relationships.  Used correctly, these 
 relationships can reveal a lot of useful information.  The concept of IOS 
 parent and child is pretty intuitive, but we'll go through a simple example 
@@ -61,7 +61,7 @@ In short:
 - Line 1 is a parent, and its children are lines 2, 4, and 7.
 - Line 2 is also a parent, and it only has one child: line 3.
 
-:class:`~ciscoconfparse.CiscoConfParse()` uses these parent-child relationships 
+:class:`~nety.CiscoConfParse()` uses these parent-child relationships 
 to build queries.  For instance, you can find a list of all parents with or 
 without a child; or you can find all the configuration elements that are 
 required to reconfigure a certain class-map.
@@ -69,7 +69,7 @@ required to reconfigure a certain class-map.
 :class:`~models_cisco.IOSCfgLine` objects
 -----------------------------------------
 
-When :class:`~ciscoconfparse.CiscoConfParse()` reads a configuration, it stores
+When :class:`~nety.CiscoConfParse()` reads a configuration, it stores
 parent-child relationships as a special :class:`~models_cisco.IOSCfgLine` 
 object.  These objects are very powerful.
 
@@ -91,13 +91,13 @@ Example: Retrieving text from an :class:`~models_cisco.IOSCfgLine` object
 This example:
 
 - Parses through a configuration
-- Finds an :class:`~models_cisco.IOSCfgLine` object with :func:`~ciscoconfparse.CiscoConfParse.find_objects()`
+- Finds an :class:`~models_cisco.IOSCfgLine` object with :func:`~nety.CiscoConfParse.find_objects()`
 - Retrieves the configuration text from that object (highlighted in yellow)
 
 .. code-block:: python
    :emphasize-lines: 9
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse([
    ...     '!',
    ...     'interface Serial1/0', 
@@ -164,7 +164,7 @@ Example Usage: Finding interface names that match a substring
 
 The following script will load a configuration file from 
 ``/tftpboot/bucksnort.conf`` and use 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects` to find the 
+:func:`~nety.CiscoConfParse.find_objects` to find the 
 Serial interfaces.
 
 Note that the ``^`` symbol at the beginning of the search string is a regular expression; ``^interface Serial`` tells python to limit the search to lines that 
@@ -173,12 +173,12 @@ Note that the ``^`` symbol at the beginning of the search string is a regular ex
 .. code-block:: python
    :emphasize-lines: 3
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse("/tftpboot/bucksnort.conf")
    >>> serial_objs = parse.find_objects("^interface Serial")
 
 The assuming we use the configuration in the example above, 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects()` scans the configuration 
+:func:`~nety.CiscoConfParse.find_objects()` scans the configuration 
 for matching config objects and stores a list of 
 :class:`~models_cisco.IOSCfgLine` objects in ``serial_objs``.
 
@@ -248,7 +248,7 @@ Method 2: `list-comprehension`_ to iterate over objects and search children
    >>> qos_intfs
    [<IOSCfgLine # 18 'interface Serial1/1'>]
 
-Method 3: :func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child()`
+Method 3: :func:`~nety.CiscoConfParse.find_objects_w_child()`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
@@ -263,11 +263,11 @@ Method 3: :func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child()`
 
 You can choose any of these methods to accomplish your task... 
 some might question why we cover the first two methods when 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child()` solves 
+:func:`~nety.CiscoConfParse.find_objects_w_child()` solves 
 the problem completely.  In this case, they have a point; however, 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child()` is much slower 
+:func:`~nety.CiscoConfParse.find_objects_w_child()` is much slower 
 when you have more than one child line to inspect per interface, because 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child()` performs a 
+:func:`~nety.CiscoConfParse.find_objects_w_child()` performs a 
 line-by-line search of the whole configuration line each time it is called.  
 By contrast, Method 1 is more efficient because you could simply call 
 :func:`~models_cisco.IOSCfgLine.re_search_children()` multiple times for each 
@@ -283,15 +283,15 @@ Let's suppose you wanted a list of all interfaces that have CDP enabled; this im
 1.  CDP has not been disabled globally with ``no cdp run``
 2.  The interfaces in question are not configured with ``no cdp enable``
 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_wo_child` is a function to 
+:func:`~nety.CiscoConfParse.find_objects_wo_child` is a function to 
 find parents without a specific child; it requires arguments similar to 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_w_child`:
+:func:`~nety.CiscoConfParse.find_objects_w_child`:
 
 - The first argument is a regular expression to match the parents
 - The second argument is a regular expression to match the child's *exclusion*
 
 Since we need to find parents that do not have ``no cdp enable``, we will use 
-:func:`~ciscoconfparse.CiscoConfParse.find_objects_wo_child` for this query.  
+:func:`~nety.CiscoConfParse.find_objects_wo_child` for this query.  
 Note that the script below makes use of a special property of python lists... 
 empty lists test False in Python; thus, we can 
 use ``if not bool(parse.find_objects(r'no cdp run'))`` to ensure that CDP is 

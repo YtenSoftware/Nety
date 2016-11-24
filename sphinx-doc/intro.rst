@@ -5,7 +5,7 @@ Introduction
 Overview
 ---------
 
-ciscoconfparse is a Python_ library, which parses through Cisco IOS-style 
+nety is a Python_ library, which parses through Cisco IOS-style 
 configurations.  It can:
 
 - Audit existing router / switch / firewall / wlc configurations
@@ -17,9 +17,9 @@ The library examines an IOS-style config and breaks it into a set of linked
 parent / child relationships; each configuration line is stored in a different 
 :class:`~models_cisco.IOSCfgLine` object.
 
-.. figure:: _static/ciscoconfparse_overview.png
+.. figure:: _static/nety_parent_child.png
    :width: 600px
-   :alt: ciscoconfparse overview
+   :alt: nety overview
    :align: left
 
    Figure 1, An Example of Parent-line / Child-line relationships
@@ -45,7 +45,7 @@ hierarchy in them.
 |br|
 |br|
 
-What is ciscoconfparse good for?
+What is nety good for?
 ----------------------------------
 
 After several network evolutions, you may have a tangled mess of conflicting or 
@@ -54,16 +54,16 @@ FHRP timers, routing protocols, duplicated subnets, cdp, console passwords, or
 aaa schemes have a measurable affect on up time and beg for a tool to audit them.
 However, manually scrubbing configurations is a long and error-prone process.
 
-Audits aren't the only use for ciscoconfparse.  Let's suppose you are working 
+Audits aren't the only use for nety.  Let's suppose you are working 
 on a design and need a list of dot1q trunks on a switch with more than 400 
 interfaces.  You can't grep for them because you need the interface names of 
 layer2 trunks; the interface name is stored on one line, and the trunk 
 configuration is stored somewhere below the interface name.  With 
-ciscoconfparse, it's really this easy...
+nety, it's really this easy...
 
 .. sourcecode:: python
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('/tftpboot/largeConfig.conf')
    >>> trunks = parse.find_parents_w_child("^interface", "switchport trunk")
    >>> for intf in trunks:
@@ -113,14 +113,14 @@ These are a few selected public mentions about CiscoConfParse; I usually try not
 
 .. raw:: html
 
-   <a href="https://github.com/mpenning/ciscoconfparse/issues/13#issuecomment-71340177"><img src="https://raw.githubusercontent.com/mpenning/ciscoconfparse/master/sphinx-doc/_static/crackerjackmack.png" width="800" alt="CiscoConfParse Github issue #13"></a>
+   <a href="https://github.com/mpenning/nety/issues/13#issuecomment-71340177"><img src="https://raw.githubusercontent.com/mpenning/nety/master/sphinx-doc/_static/crackerjackmack.png" width="800" alt="CiscoConfParse Github issue #13"></a>
 
 |br|
 |br|
 
 .. raw:: html
 
-   <a href="http://www.reddit.com/r/Python/comments/2zxew5/interesting_dmca_notice_gplv3_license_violation/#cptgtl7"><img src="https://raw.githubusercontent.com/mpenning/ciscoconfparse/master/sphinx-doc/_static/reddit_20150328.png" width="500" alt="Reddit comment - 20150328"></a>
+   <a href="http://www.reddit.com/r/Python/comments/2zxew5/interesting_dmca_notice_gplv3_license_violation/#cptgtl7"><img src="https://raw.githubusercontent.com/mpenning/nety/master/sphinx-doc/_static/reddit_20150328.png" width="500" alt="Reddit comment - 20150328"></a>
 
 |br|
 |br|
@@ -147,7 +147,7 @@ These are a few selected public mentions about CiscoConfParse; I usually try not
 What's new in version 1.0.0
 ---------------------------
 
-I wrote :mod:`ciscoconfparse` seven years ago as literally my first Python 
+I wrote :mod:`nety` seven years ago as literally my first Python 
 project; through the years, my understanding of Python improved, and I also 
 found many missing features along the way. Some of these features, like 
 changing a configuration after it was parsed, required non-trivial changes to 
@@ -160,13 +160,13 @@ changes were made:
 - Major improvement in config parsing speed
 - Much better unit-test coverage
 - Too many bug fixes to count
-- New feature - :mod:`ciscoconfparse` inserts, deletes and appends config lines
+- New feature - :mod:`nety` inserts, deletes and appends config lines
 - Rearchitected the library, with an eye towards more future improvements
-- Revisions in scripting flow.  All users are encouraged to use :class:`~models_cisco.IOSCfgLine()` objects whenever possible.  Typically, you'll start by matching them with :func:`~ciscoconfparse.CiscoConfParse.find_objects()`.  Working directly with :class:`~models_cisco.IOSCfgLine()` objects makes your scripts less complicated and it also makes them faster than using legacy :mod:`ciscoconfparse` syntax.
+- Revisions in scripting flow.  All users are encouraged to use :class:`~models_cisco.IOSCfgLine()` objects whenever possible.  Typically, you'll start by matching them with :func:`~nety.CiscoConfParse.find_objects()`.  Working directly with :class:`~models_cisco.IOSCfgLine()` objects makes your scripts less complicated and it also makes them faster than using legacy :mod:`nety` syntax.
 
-.. _`brace-delimited configurations`: https://github.com/mpenning/ciscoconfparse/blob/81cb4bee7c5ad95301b9e8b3562d70f11fa32505/configs/sample_01.junos
-.. _`Github Issue #17`: https://github.com/mpenning/ciscoconfparse/issues/17
-.. _`This project [ciscoconfparse] has really been a lifesaver`: https://github.com/mpenning/ciscoconfparse/issues/13#issuecomment-71340177
+.. _`brace-delimited configurations`: https://github.com/mpenning/nety/blob/81cb4bee7c5ad95301b9e8b3562d70f11fa32505/configs/sample_01.junos
+.. _`Github Issue #17`: https://github.com/mpenning/nety/issues/17
+.. _`This project [nety] has really been a lifesaver`: https://github.com/mpenning/nety/issues/13#issuecomment-71340177
 .. _`Dive into Python`: http://www.diveintopython.net/
 .. _`Dive into Python3`: http://www.diveintopython3.net/
 .. _`regular expressions`: https://docs.python.org/2/howto/regex.html

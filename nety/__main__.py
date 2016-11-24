@@ -1,7 +1,10 @@
-from ciscoconfparse import *
+# Follow PEP366...
+#     Credit (the question): http://stackoverflow.com/q/2943847/667301
+__package__ = "nety"
+from .nety import *
 
-""" __init__.py - Parse, Query, Build, and Modify IOS-style configurations
-     Copyright (C) 2007-2015 David Michael Pennington
+""" __main__.py - Parse, Query, Build, and Modify IOS-style configurations
+     Copyright (C) 2014-2015 David Michael Pennington
 
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
