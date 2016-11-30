@@ -609,8 +609,8 @@ class BaseCfgLine(object):
         :func:`~models_cisco.IOSCfgLine.re_match_iter_typed` to build an 
         :func:`~ccp_util.IPv4Obj` address object for each interface.
 
-           >>> from ciscoconfparse import CiscoConfParse
-           >>> from ciscoconfparse.ccp_util import IPv4Obj
+           >>> from nety import CiscoConfParse
+           >>> from nety.ccp_util import IPv4Obj
            >>> config = [
            ...     '!',
            ...     'interface Serial1/0',

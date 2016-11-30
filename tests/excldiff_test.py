@@ -1,4 +1,4 @@
-from ciscoconfparse import CiscoConfParse
+from nety import CiscoConfParse
 
 ## this is not a valid test yet, because we don't detect parents of a line
 ## that is missing (i.e. 'no passive-interface Vlan500' below)

@@ -30,7 +30,7 @@ def _random_secret_key():
 def run(password='', debug=False, host='127.0.0.1', port=8282):
     SECRET_KEY = os.environ.get('CCP_FLASK_KEY', False) or _random_secret_key()
     USERNAME = os.environ.get('CCP_FLASK_ADMIN_USER', False) or 'admin'
-    PASSWORD = password or 'ciscoconfparse'
+    PASSWORD = password or 'nety'
     app = Flask(__name__)
     app.config.from_object(__name__)
     app.run(host=host, port=port, debug=False)

@@ -55,25 +55,25 @@ Using the Python in Windows
 
 Please see the official `Python on Windows`_ documentation.
 
-Using :mod:`ciscoconfparse`
+Using :mod:`nety`
 ---------------------------
 
 Once you know how to find and use python on your system, it's time to ensure 
-you have a copy of :mod:`ciscoconfparse`.   Many of the examples assume you 
-have imported :class:`~ciscoconfparse.CiscoConfParse` at the interpreter 
+you have a copy of :mod:`nety`.   Many of the examples assume you 
+have imported :class:`~nety.CiscoConfParse` at the interpreter 
 before you start...
 
 .. code-block:: python
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
 
 Try importing `CiscoConfParse` in the python interpreter now.  If it doesn't 
-work, then you'll need to install ciscoconfparse.
+work, then you'll need to install nety.
 
-Installing :mod:`ciscoconfparse`
+Installing :mod:`nety`
 --------------------------------
 
-ciscoconfparse_ needs  Python versions 2.6, 2.7 or 3.2+; the OS should not
+nety_ needs  Python versions 2.6, 2.7 or 3.2+; the OS should not
 matter. If you want to run it under a Python virtualenv_, it's been heavily
 tested in that environment as well. 
 
@@ -85,7 +85,7 @@ You can check your python version with the ``-V`` switch...
    Python 2.7.3
    [mpenning@Mudslide ~]$
 
-The best way to get ciscoconfparse is with pip_ or setuptools_.
+The best way to get nety is with pip_ or setuptools_.
 
 Install with pip
 ~~~~~~~~~~~~~~~~
@@ -94,12 +94,12 @@ If you already have pip_, you can install as usual:
 
 Alternatively you can install with pip_: :: 
 
-      pip install --upgrade ciscoconfparse
+      pip install --upgrade nety
 
-If you have a specific version of ciscoconfparse in mind, you can specify that
+If you have a specific version of nety in mind, you can specify that
 at the command-line ::
 
-      pip install ciscoconfparse==1.2.39
+      pip install nety==1.3.0
 
 
 Install with setuptools
@@ -107,19 +107,19 @@ Install with setuptools
 
 If you don't have pip_, you can use setuptools_...  ::
 
-      # Substitute whatever ciscoconfparse version you like...
-      easy_install -U ciscoconfparse
+      # Substitute whatever nety version you like...
+      easy_install -U nety
 
-If you have a specific version of ciscoconfparse in mind, you can specify that
+If you have a specific version of nety in mind, you can specify that
 at the command-line ::
 
-      easy_install -U ciscoconfparse==1.2.39
+      easy_install -U nety==1.3.0
 
 Install from the source
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 If you don't have either pip_ or setuptools_, you can 
-`download the ciscoconfparse compressed tarball`_, extract it and 
+`download the nety compressed tarball`_, extract it and 
 run the ``setup.py`` script in the tarball: ::
 
       python setup.py install
@@ -134,15 +134,15 @@ or `bitbucket repo`_:
   ::
 
       hg init
-      hg clone https://bitbucket.org/mpenning/ciscoconfparse
+      hg clone https://bitbucket.org/mpenning/nety
 
 - From github_:
   ::
 
-      git clone git://github.com//mpenning/ciscoconfparse
+      git clone git://github.com//mpenning/nety
 
 
-.. _`download the ciscoconfparse compressed tarball`: https://pypi.python.org/pypi/ciscoconfparse/ 
+.. _`download the nety compressed tarball`: https://pypi.python.org/pypi/nety/ 
 
 .. _`Python on Windows`: https://docs.python.org/2/faq/windows.html
 
@@ -150,18 +150,18 @@ or `bitbucket repo`_:
 
 .. _pip: https://pypi.python.org/pypi/pip
 
-.. _`github repo`: https://github.com/mpenning/ciscoconfparse
+.. _`github repo`: https://github.com/mpenning/nety
 
-.. _`bitbucket repo`: https://bitbucket.org/mpenning/ciscoconfparse
+.. _`bitbucket repo`: https://bitbucket.org/mpenning/nety
 
-.. _bitbucket: https://bitbucket.org/mpenning/ciscoconfparse
+.. _bitbucket: https://bitbucket.org/mpenning/nety
 
-.. _github: https://github.com/mpenning/ciscoconfparse
+.. _github: https://github.com/mpenning/nety
 
 .. _mercurial: http://mercurial.selenic.com/
 
 .. _virtualenv: https://pypi.python.org/pypi/virtualenv
 
-.. _ciscoconfparse: https://pypi.python.org/pypi/ciscoconfparse
+.. _nety: https://pypi.python.org/pypi/nety
 
 

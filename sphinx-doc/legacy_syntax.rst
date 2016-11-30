@@ -1,8 +1,8 @@
 =====================================================
-:class:`~ciscoconfparse.CiscoConfParse` Legacy Syntax
+:class:`~nety.CiscoConfParse` Legacy Syntax
 =====================================================
 
-This section will cover the legacy :class:`~ciscoconfparse.CiscoConfParse()`
+This section will cover the legacy :class:`~nety.CiscoConfParse()`
 syntax; these were the original methods before version 1.0.0; legacy
 methods always returned text strings.  This makes them easier to learn, but
 harder to write complex scripts with.  There is nothing wrong with continuing to use these methods; however, you will probably find that your scripts are more 
@@ -65,7 +65,7 @@ Finding interface names that match a substring
 
 The following script will load a configuration file from 
 ``/tftpboot/bucksnort.conf`` and use 
-:func:`~ciscoconfparse.CiscoConfParse.find_lines` to find the 
+:func:`~nety.CiscoConfParse.find_lines` to find the 
 Serial interfaces.
 
 Note that the ``^`` symbol at the beginning of the search string is a regular 
@@ -77,7 +77,7 @@ To find matching interface statements, use this code...
 .. code-block:: python
    :emphasize-lines: 3
   
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse("/tftpboot/bucksnort.conf")
    >>> serial_lines = parse.find_lines("^interface Serial")
    >>> serial_lines
@@ -92,24 +92,24 @@ Finding parents with a specific child
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The last example was a nice start, but if this was all 
-:class:`~ciscoconfparse.CiscoConfParse` could do, then it's easier to 
+:class:`~nety.CiscoConfParse` could do, then it's easier to 
 use ``grep``.
 
 Let's suppose you need to find all interfaces that are configured with 
 ``service-policy QOS_1`` in the output direction.  We will use 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_w_child` to search the 
+:func:`~nety.CiscoConfParse.find_parents_w_child` to search the 
 config.
 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_w_child` requires at least 
+:func:`~nety.CiscoConfParse.find_parents_w_child` requires at least 
 two different arguments:
 
 - The first argument is a regular expression to match the parents
 - The second argument is a regular expression to match the child
 
 If the arguments above match both the parent and child respectively, then 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_w_child` will add the 
+:func:`~nety.CiscoConfParse.find_parents_w_child` will add the 
 parent's line to a list.  This list is returned after 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_w_child` finishes analyzing 
+:func:`~nety.CiscoConfParse.find_parents_w_child` finishes analyzing 
 the configuration.
 
 In this case, we need to find parents that begin with ``^interface`` and have a child matching ``service-policy output QOS_1``.  One might wonder why we chose to put a caret (``^``) in front of the parent's regex, but not in front of the child's regex.  We did this because of the way IOS indents commands in the configuration.  Interface commands always show up at the top of the heirarchy in the configuration; interfaces do not get indented.  On the other hand, the commands applied to the interface, such as a service-policy *are* indented.  If we put a caret in front of ``service-policy output QOS_1``, it would not match anything because we would be forcing a beginning-of-the-line match.  The search and result is shown below.
@@ -135,15 +135,15 @@ Let's suppose you wanted a list of all interfaces that have CDP enabled; this im
 1.  CDP has not been disabled globally with ``no cdp run``
 2.  The interfaces in question are not configured with ``no cdp enable``
 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_wo_child` is a function to 
+:func:`~nety.CiscoConfParse.find_parents_wo_child` is a function to 
 find parents without a specific child; it requires arguments similar to 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_w_child`:
+:func:`~nety.CiscoConfParse.find_parents_w_child`:
 
 - The first argument is a regular expression to match the parents
 - The second argument is a regular expression to match the child's *exclusion*
 
 Since we need to find parents that do not have ``no cdp enable``, we will use 
-:func:`~ciscoconfparse.CiscoConfParse.find_parents_wo_child` for this query.  
+:func:`~nety.CiscoConfParse.find_parents_wo_child` for this query.  
 Note that the script below makes use of a special property of python lists... 
 empty lists test False in Python; thus, we can 
 use ``if not bool(parse.find_lines('no cdp run'))`` to ensure that CDP is 
@@ -167,7 +167,7 @@ Finding children
 
 Let's suppose you needed to look at the children of a particular parent, but 
 you didn't want the children's children.  
-:func:`~ciscoconfparse.CiscoConfParse.find_children` was made for this purpose.
+:func:`~nety.CiscoConfParse.find_children` was made for this purpose.
 
 .. code-block:: python
 
@@ -181,7 +181,7 @@ Results:
    ['policy-map QOS_1', ' class GOLD', ' class SILVER', ' class default']
 
 If you *do* want the children (recursively), then use 
-:func:`~ciscoconfparse.CiscoConfParse.find_all_children`.
+:func:`~nety.CiscoConfParse.find_all_children`.
 
 .. code-block:: python
 
@@ -196,7 +196,7 @@ If you *do* want the children (recursively), then use
 CiscoConfParse options
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Several of :class:`~ciscoconfparse.CiscoConfParse`'s functions support one of these options:
+Several of :class:`~nety.CiscoConfParse`'s functions support one of these options:
 
 - exactmatch
 - ignore_ws
@@ -210,7 +210,7 @@ Not all functions support the options above; please consult the API documentatio
 Checking Passwords
 ------------------------------
 
-Sometimes you find yourself wishing you could decrypt vty or console passwords to ensure that they conform to the corporate standard.  :class:`~ciscoconfparse.CiscoConfParse` comes with a :class:`~ciscoconfparse.CiscoPassword` class that can decrypt some Cisco IOS type 7 passwords.
+Sometimes you find yourself wishing you could decrypt vty or console passwords to ensure that they conform to the corporate standard.  :class:`~nety.CiscoConfParse` comes with a :class:`~nety.CiscoPassword` class that can decrypt some Cisco IOS type 7 passwords.
 
 .. note::
 
@@ -229,11 +229,11 @@ Simple example... let's suppose you have this configuration...
     password 107D3D232342041E3A
     exec-timeout 15 0
 
-We need to ensure that the password on the console is correct.  This is easy with the :class:`~ciscoconfparse.CiscoPassword` class
+We need to ensure that the password on the console is correct.  This is easy with the :class:`~nety.CiscoPassword` class
 
 .. code-block:: python
 
-   >>> from ciscoconfparse import CiscoPassword
+   >>> from nety import *CiscoPassword
    >>> dp = CiscoPassword()
    >>> decrypted_passwd = dp.decrypt('107D3D232342041E3A')
 

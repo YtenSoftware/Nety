@@ -3,8 +3,8 @@ CiscoConfParse Tutorial
 =======================
 
 * Search your Cisco configurations with `Python <http://python.org/>`_
-* Code repo on `github <http://github.com/mpenning/ciscoconfparse/>`_
-* `Documentation <http://www.pennington.net/py/ciscoconfparse/>`_
+* Code repo on `github <http://github.com/mpenning/nety/>`_
+* `Documentation <http://www.pennington.net/py/nety/>`_
 * Author: Mike Pennington <mike@pennington.net>
 * Date: 2015-07-04
 
@@ -19,8 +19,8 @@ Installation
 ============
 
 * Assume you're running linux and already have ``pip`` installed
-* The next command will download and install the latest version from `pypi <http://pypi.python.org/pypi/ciscoconfparse/>`_
-* ``pip install --ugprade ciscoconfparse``
+* The next command will download and install the latest version from `pypi <http://pypi.python.org/pypi/nety/>`_
+* ``pip install --ugprade nety``
 
 Examples
 =========
@@ -37,7 +37,7 @@ Search configs
    [GCC 4.7.2] on linux2
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('/path/to/the/config', syntax='ios')
    >>>
    >>> # Find all interfaces with an access-list...
@@ -57,7 +57,7 @@ Modify configs
    [GCC 4.7.2] on linux2
    Type "help", "copyright", "credits" or "license" for more information.
    >>>
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('/path/to/the/config', syntax='ios')
    >>>
    >>> # Standardize switchport configs with 0.5% broadcast storm control
@@ -76,7 +76,7 @@ Diff configs
 
 ::
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> BASELINE = """!
    ... interface GigabitEthernet0/1
    ...  ip address 10.0.0.1 255.255.255.0
@@ -113,14 +113,14 @@ Notes about diffs
 Parsing Junos
 =============
 
-* Is it possible?  Yes (after `Github issue #17 <https://github.com/mpenning/ciscoconfparse/issues/17>`_)
+* Is it possible?  Yes (after `Github issue #17 <https://github.com/mpenning/nety/issues/17>`_)
 * Be aware that this will convert your Junos configuration to a Cisco-IOS style
 
 .. class:: prettyprint lang-python
 
 ::
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('configs/sample_01.junos', syntax='junos', comment='#!')
    >>> print '\n'.join(parse.ioscfg[0:5])
    !# Last commit: 2015-06-28 13:00:59 CST by mpenning
@@ -140,8 +140,8 @@ DNS Lookups
 * Thus, it's helpful to have DNS functionality in CiscoConfParse
 * DNS lookup support:
 
-  - Use ciscoconfparse.ccp_util.dns_lookup() for IPv4
-  - Use ciscoconfparse.ccp_util.dns6_lookup() for IPv6
+  - Use nety.ccp_util.dns_lookup() for IPv4
+  - Use nety.ccp_util.dns6_lookup() for IPv6
 
 Lookup DNS A-Record
 -------------------
@@ -150,7 +150,7 @@ Lookup DNS A-Record
 
 ::
 
-   >>> from ciscoconfparse.ccp_util import dns_lookup
+   >>> from nety.ccp_util import dns_lookup
    >>>
    >>> # Return a dictionary with all info...
    >>> dns_lookup('extfw')
@@ -171,7 +171,7 @@ Lookup DNS PTR-Record
 
 ::
 
-   >>> from ciscoconfparse.ccp_util import reverse_dns_lookup
+   >>> from nety.ccp_util import reverse_dns_lookup
    >>>
    >>> # Return a dictionary with all info...
    >>> reverse_dns_lookup('10.10.255.1')
@@ -188,7 +188,7 @@ Factory option
 IOSCfgLine
 ----------
 
-* By default, CiscoConfParse stores config lines in something called an `IOSCfgLine() <http://www.pennington.net/py/ciscoconfparse/api_IOSCfgLine.html>`_
+* By default, CiscoConfParse stores config lines in something called an `IOSCfgLine() <http://www.pennington.net/py/nety/api_IOSCfgLine.html>`_
 
   - ``IOSCfgLine()`` knows the line number
   - ``IOSCfgLine()`` knows where the parents and children are
@@ -197,13 +197,13 @@ IOSCfgLine
 IOSCFGLINE() objects
 --------------------
 
-* By default `IOSCfgLine() <http://www.pennington.net/py/ciscoconfparse/api_IOSCfgLine.html>`_ objects don't pre-parse rich information about the config
+* By default `IOSCfgLine() <http://www.pennington.net/py/nety/api_IOSCfgLine.html>`_ objects don't pre-parse rich information about the config
 
 .. class:: prettyprint lang-python
 
 ::
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('/path/to/config')
    >>> intf = parse.find_objects('interface GigabitEthernet0/1')[0]
    >>> intf
@@ -223,7 +223,7 @@ Custom line objects
 
 ::
 
-   >>> from ciscoconfparse import CiscoConfParse
+   >>> from nety import CiscoConfParse
    >>> parse = CiscoConfParse('/path/to/config', factory=True)
    >>> intf = parse.find_objects('interface GigabitEthernet0/1')[0]
    >>> intf
@@ -242,7 +242,7 @@ Important information
 * Parsing with ``factory=True`` is *BETA* functionality
 
   - Read the source code for documentation
-  - Only `Cisco IOS <https://github.com/mpenning/ciscoconfparse/blob/master/ciscoconfparse/models_cisco.py>`_ and `Cisco ASA <https://github.com/mpenning/ciscoconfparse/blob/master/ciscoconfparse/models_asa.py>`_ have parsers
+  - Only `Cisco IOS <https://github.com/mpenning/nety/blob/master/nety/models_cisco.py>`_ and `Cisco ASA <https://github.com/mpenning/nety/blob/master/nety/models_asa.py>`_ have parsers
   - Functionality is limited and I'm *slowly* adding more
 
 * ``factory=True`` syntax is somewhat unstable

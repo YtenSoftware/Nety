@@ -27,7 +27,7 @@
 1.2.15  20150322 Implement feature requested by Github issue #28 (Cisco ASA standby addrs), improve sync_diff() / fix bugs, add .geneology / .geneology_text features
 1.2.14  20150307 Enhance config modification speed as documented in Github issue #26. Implement find_interface_objects() as documented in Github issue #27.  Improved unit test coverage
 1.2.13  20150301 Fix Github issue #25: Python3 bites me again
-1.2.12  20150301 Fix Github issue #24: recursive dependencies in setup.py and ciscoconfparse/__init__.py
+1.2.12  20150301 Fix Github issue #24: recursive dependencies in setup.py and nety/__init__.py
 1.2.11  20150301 Converted unit-tests to py.test. Fix Github issue #23 (banner detection bug), add sync_diff() feature from Github issue #22, improve setup.py script.  NOTE: going forward, sync_diff() will deprecate use of req_cfgspec_excl_diff()
 1.2.10  20150210 Fix Github issue #21 in find_all_children(), update unit tests to detect github issue #21, add new-style example in examples/
 1.2.9   20150202 reduce package size, enhance generator support
@@ -40,7 +40,7 @@
 1.2.2   20150125 Add support for parsing Junos as a Cisco-IOS-style configuration - github issue #17, fixed github issue #16 [Banners with comment characters in them are not parsed correctly], fixed github issue #15 [CiscoConfParse.append('config_line_here') is a null operation]
 1.2.1   20150124 More parsing speed optimizations, particularly in banner parsing.  Ripped out old, unused code
 1.2.0   20150124 Major parser rewrite: streamline parser, less spaghetti code, add ccp_abc.is_config_line.  This version *should* parse Cisco Nexus syntax now (but parse Cisco Nexus configs with ignore_blank_lines=False).  Implement enhancement in github issue #6
-1.1.24  20150123 Fix github issue #13 (ciscoconfparse did not parse correctly when ignore_blank_lines=True); some parent assignments were missed if blank lines were in the configuration
+1.1.24  20150123 Fix github issue #13 (nety did not parse correctly when ignore_blank_lines=True); some parent assignments were missed if blank lines were in the configuration
 1.1.23  20150117 Update copyrights to 2015, use list comprehension in re_search_children() to increase speed
 1.1.22  20141204 More bugfixes in ccp_util.IPv4Obj(); IPv4Obj should mostly be stable and reliable now.  Added solid unit test coverage for IPv4Obj()
 1.1.21  20141203 Major bugfixes in IPv4Obj, convert results from ordinal_list() from a python list to a python tuple
@@ -101,9 +101,9 @@
 0.9.28  20140403 Added new linesplit_rgx option in CiscoConfParse() to help
         user who filed Github Issue #2; no defaults were changed.  Added 
         Python 3.4 in .travis.yml in hopes of testing against Python 3.4
-0.9.27  20140326 Added a new append_line() method to ciscoconfparse.
+0.9.27  20140326 Added a new append_line() method to nety.
 0.9.26  20140319  Finally caved and left my copy of ipaddr that's modified to
-        work with python3 in ciscoconfparse/ipaddr.py, where Travis can find it
+        work with python3 in nety/ipaddr.py, where Travis can find it
 0.9.25  20140319 Improve speed in find_blocks(), as requested by Github 
         Issue #1.  Minor change to improve Travis CI builds
 0.9.24  20140313 Fix broken Travis CI builds (because of where I moved the ipaddr module).  Added new functionality

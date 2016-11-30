@@ -103,7 +103,7 @@ already have setuptools_, you can install as usual:
 ::
 
       # Substitute whatever Nety version you like...
-      easy_install -U Nety==1.2.39
+      easy_install -U nety==1.3.0
 
 Alternatively you can install into Python2.x with pip_:
 
@@ -201,7 +201,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _Python: http://python.org/
 
-.. _CiscoConfParse: https://github.com/mpenning/ciscoconfparse
+.. _CiscoConfParse: https://github.com/mpenning/nety
 
 .. _`pypy JIT`: http://pypy.org/
 

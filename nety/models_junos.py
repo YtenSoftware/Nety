@@ -46,16 +46,16 @@ class JunosCfgLine(BaseCfgLine):
     .. note::
 
        Originally, :class:`~models_junos.JunosCfgLine` objects were only 
-       intended for advanced ciscoconfparse users.  As of ciscoconfparse 
+       intended for advanced nety users.  As of nety 
        version 0.9.10, *all users* are strongly encouraged to prefer the 
        methods directly on :class:`~models_junos.JunosCfgLine` objects.  
        Ultimately, if you write scripts which call methods on 
        :class:`~models_junos.JunosCfgLine` objects, your scripts will be much 
        more efficient than if you stick strictly to the classic 
-       :class:`~ciscoconfparse.CiscoConfParse` methods.
+       :class:`~nety.CiscoConfParse` methods.
 
     Args:
-        - text (str): A string containing a text copy of the Junos configuration line.  :class:`~ciscoconfparse.CiscoConfParse` will automatically identify the parent and children (if any) when it parses the configuration. 
+        - text (str): A string containing a text copy of the Junos configuration line.  :class:`~nety.CiscoConfParse` will automatically identify the parent and children (if any) when it parses the configuration. 
         - comment_delimiter (str): A string which is considered a comment for the configuration format.  Since this is for Cisco Junos-style configurations, it defaults to ``!``.
 
     Attributes:

@@ -4,9 +4,9 @@
 API
 ===
 
-.. module:: ciscoconfparse
+.. module:: nety
 
-This part of the documentation covers all the significant Python classes and methods used in :class:`~ciscoconfparse.CiscoConfParse()`.
+This part of the documentation covers all the significant Python classes and methods used in :class:`~nety.CiscoConfParse()`.
 
 Contents:
 

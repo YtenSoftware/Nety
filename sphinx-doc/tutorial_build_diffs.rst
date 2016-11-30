@@ -62,7 +62,7 @@ enable LDP.
 .. code-block:: python
    :emphasize-lines: 6,8
 
-   from ciscoconfparse import CiscoConfParse
+   from nety import CiscoConfParse
 
    # Parse the original configuration
    parse = CiscoConfParse('/tftpboot/bucksnort.conf')

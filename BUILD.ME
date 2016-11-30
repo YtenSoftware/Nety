@@ -1,12 +1,12 @@
 mkdir local_copy
 cd local_copy
 hg init
-hg pull http://bitbucket.org/mpenning/ciscoconfparse
+hg pull http://bitbucket.org/mpenning/nety
 hg update
-hg pull git+ssh://git@github.com:mpenning/ciscoconfparse.git
+hg pull git+ssh://git@github.com:mpenning/nety.git
 hg update
 ### Version updates:
-# - Update ciscoconfparse.version_tuple
+# - Update nety.version_tuple
 # - Update .travis.yml
 # - Update copyright year in README.rst
 # - Update copyright year in sphinx-doc/license_copyright.rst
@@ -15,15 +15,15 @@ hg update
 hg commit ...
 python setup.py sdist; python setup.py register; python setup.py sdist upload
 ## Clean up repo after build
-rm -rf ciscoconfparse/*pyc; rm -rf dist/ ciscoconfparse.egg-info/ setuptools*
-rm -rf ciscoconfparse/ciscoconfparse.egg-info/
+rm -rf nety/*pyc; rm -rf dist/ nety.egg-info/ setuptools*
+rm -rf nety/nety.egg-info/
 rm -rf .eggs/
 # Push docs
 python deploy_docs.py
 # Push to bitbucket
 cp .hgrc .hg/
 hg bookmark -f master
-hg push https://mpenning@bitbucket.org/mpenning/ciscoconfparse
+hg push https://mpenning@bitbucket.org/mpenning/nety
 ## On my system, with ~/.pypirc
 # Push to github
-hg push git+ssh://git@github.com:mpenning/ciscoconfparse.git
+hg push git+ssh://git@github.com:mpenning/nety.git

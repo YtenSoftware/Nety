@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from ciscoconfparse import CiscoConfParse
+from nety import CiscoConfParse
 
 parse = CiscoConfParse("../configs/sample_01.ios")
 

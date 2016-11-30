@@ -5,6 +5,8 @@ build
 *.orig
 tags
 .tox
-ciscoconfparse.egg-*/
+nety.egg-*/
 .eggs/*
 .cache/*
+.coverage
+.DS_Store
