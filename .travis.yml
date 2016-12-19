@@ -20,7 +20,7 @@ os:
 
 install:
  - pip install --upgrade -q pip
- - pip install --upgrade -q nety
-
+ - pip install .
+ - pip install -r requirements.txt
 
 script: make test
