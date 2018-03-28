@@ -1079,6 +1079,19 @@ class BaseIOSIntfLine(IOSCfgLine):
         return retval
 
     @property
+    def switchport_mode(self):
+        """Return the switchport mode
+
+        """
+        if self.is_switchport:
+            retval = self.re_match_iter_typed(r'^\s*switchport\smode\s(.*)\s*', 
+                default=False)
+            return retval
+        # No switchport, return an emptry string
+        else:
+            return ''
+
+    @property
     def has_manual_switch_access(self):
         retval = self.re_match_iter_typed(r'^\s*(switchport\smode\s+access)\s*$',
             result_type=bool, default=False)
@@ -1173,6 +1186,32 @@ class BaseIOSIntfLine(IOSCfgLine):
         else:
             default_val = 0
         retval = self.re_match_iter_typed(r'^\s*switchport\s+access\s+vlan\s+(\d+)$',
+            result_type=int, default=default_val)
+        return retval
+
+    @property
+    def access_or_native_vlan(self):
+        """Return an integer with the access or native vlan number.  
+        Return 1, if the switchport has no explicit vlan configured; 
+        return 0 if the port isn't a switchport"""
+        if self.is_switchport:
+            default_val = 1
+        else:
+            default_val = 0
+        if self.is_trunk:
+            retval = self.re_match_iter_typed(r'^\s*switchport\s+trunk\s+native\s+vlan\s+(\d+)$',
+                result_type=int, default=default_val)
+        else:
+            retval = self.re_match_iter_typed(r'^\s*switchport\s+access\s+vlan\s+(\d+)$',
+                result_type=int, default=default_val)
+        return retval
+
+    @property
+    def voice_vlan(self):
+        """Return an integer with the voice vlan number.  
+        return 0 if the port has no voice vlan configured"""
+        default_val = 0
+        retval = self.re_match_iter_typed(r'^\s*switchport\s+voice\s+vlan\s+(\d+)$',
             result_type=int, default=default_val)
         return retval
 
