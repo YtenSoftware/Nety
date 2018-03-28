@@ -10,7 +10,6 @@ python:
  - 3.4
  - 3.5
  - 3.6
- - pypy
  - pypy3
 
 # http://docs.travis-ci.com/user/multi-os/
