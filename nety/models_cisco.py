@@ -266,6 +266,18 @@ class IOSCfgLine(BaseCfgLine):
         return retval
 
     @property
+    def portchannel_id(self):
+        """Return a integer with the port-channel id
+
+        """
+        if self.is_portchannel:
+            retval = self.re_match_iter_typed(r'^\s*channel-group\s+(\d+)',
+                result_type=str, default=False)
+            return retval
+        else:
+            return False
+
+    @property
     def is_l2vlan(self):
         """Return a boolean indicating whether this is a l2 vlan configuration
 
@@ -619,6 +631,14 @@ class BaseIOSIntfLine(IOSCfgLine):
             subintf_regex = r'^interface\s+[A-Za-z\-]+\s*(\d+.*?\.?\d?)(\s\S+)*\s*$'
             subintf_number = self.re_match(subintf_regex, group=1, default='')
             return subintf_number
+
+    @property
+    def short_name(self):
+        """Return the short name of the interface, as used in 'Show Interface Status'.
+        """
+        retval = re.search(r'(Gi|Fa|Eth|Te|Fo|Po).*?(\d.*)', self.text)
+        if retval:
+            return "{}{}".format(retval.group(1), retval.group(2))
 
     @property
     def description(self):
