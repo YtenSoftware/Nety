@@ -10,7 +10,7 @@ package:
 .PHONY: pypi
 pypi:
 	make clean
-	python setup.py sdist; python setup.py register; python setup.py sdist upload
+	python setup.py sdist; twine upload dist/* --skip-existing
 .PHONY: repo-push
 repo-push:
 	cp .hgrc .hg/
