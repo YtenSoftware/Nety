@@ -743,6 +743,32 @@ class BaseIOSIntfLine(IOSCfgLine):
 
 
     @property
+    def manual_speed(self):
+        """Return a integer with the manual speed setting
+
+        """
+        if self.has_manual_speed:
+            retval = self.re_match_iter_typed(r'^\s*speed\s+(\d+)',
+                result_type=str, default=False)
+            return retval
+        else:
+            return False
+
+
+    @property
+    def manual_duplex(self):
+        """Return a integer with the manual speed setting
+
+        """
+        if self.has_manual_duplex:
+            retval = self.re_match_iter_typed(r'^\s*duplex\s+(\S+)',
+                result_type=str, default=False)
+            return retval
+        else:
+            return False
+
+
+    @property
     def has_manual_carrierdelay(self):
         """Return a python boolean for whether carrier delay is manually configured on the interface"""
         return bool(self.manual_carrierdelay)
