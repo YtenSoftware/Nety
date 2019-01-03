@@ -1191,6 +1191,28 @@ class BaseIOSIntfLine(IOSCfgLine):
             return []   # No trunk, no Vlan
 
     @property
+    def has_ip_helpers(self):
+        retval = self.re_match_iter_typed(r'^\sip\shelper-address\s(.*)$',
+            result_type=bool, default=False)
+        return retval
+
+    @property
+    def ip_helpers(self):
+        """ Returns a list with all IP Helper addresses.
+            If there are no ip helpers, return an empty list.
+        """
+        ## We can't use a simple re_match_iter_typed here as there are maybe
+        ## multiple lines of ip helper config
+        if self.has_ip_helpers:
+            ip_helpers = self.re_search_children(r'^\sip\shelper-address\s.*$')
+            if ip_helpers:
+                retval = [re.match(r'^\sip\shelper-address\s(.*)$', 
+                                   i.text).group(1) for i in ip_helpers]
+                return retval
+        else:
+            return []
+
+    @property
     def has_switch_portsecurity(self):
         if not self.is_switchport:
             return False
