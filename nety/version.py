@@ -1,3 +1,3 @@
 ## This file is a workaround for Github issue #24
-__version_tuple__ = (1, 3, 3)
+__version_tuple__ = (1, 3, 4)
 __version__ = '.'.join(map(str, __version_tuple__))
