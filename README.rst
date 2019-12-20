@@ -88,7 +88,7 @@ Docs
 Pre-requisites
 ==============
 
-Nety_ requires Python versions 3.2+ (We no longer support Python 2.x); the OS should not
+Nety_ requires Python versions 3.5+ (We no longer support Python 2.x); the OS should not
 matter. If you want to run it under a Python virtualenv_, it's been heavily
 tested in that environment as well.
 
