@@ -10,7 +10,7 @@ Nety - Currently under heavy work, don't use it for now!
    :target: https://pypi.python.org/pypi/Nety/
    :alt: Version
 
-.. image:: https://img.shields.io/github/tag/YtenSoftware/Nety.svg?style=flat-square
+.. image:: https://img.shields.io/github/v/tag/YtenSoftware/Nety.svg?style=flat-square
    :target: https://github.com/YtenSoftware/Nety
    :alt: GitHub Version
 
