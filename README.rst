@@ -10,7 +10,7 @@ Nety - Currently under heavy work, don't use it for now!
    :target: https://pypi.python.org/pypi/Nety/
    :alt: Version
 
-.. image:: https://img.shields.io/github/tag/YtenSoftware/Nety.svg?style=flat-square   
+.. image:: https://img.shields.io/github/tag/YtenSoftware/Nety.svg?style=flat-square
    :target: https://github.com/YtenSoftware/Nety
    :alt: GitHub Version
 
@@ -45,7 +45,7 @@ Nety is a Python_ library, which parses through Cisco IOS-style
 - Build new configurations
 
 The library examines an IOS-style config and breaks it into a set of linked
-parent / child relationships.  You can perform complex queries about these 
+parent / child relationships.  You can perform complex queries about these
 relationships.
 
 .. image:: https://raw.githubusercontent.com/YtenSoftware/Nety/master/sphinx-doc/_static/nety_parent_child.png
@@ -58,8 +58,8 @@ What if we don't use Cisco?
 
 Don't let that stop you.
 
-As of Nety 1.2.4, you can parse `brace-delimited configurations`_ 
-into a Cisco IOS style (see `Github Issue #17`_), which means that 
+As of Nety 1.2.4, you can parse `brace-delimited configurations`_
+into a Cisco IOS style (see `Github Issue #17`_), which means that
 Nety understands these configurations:
 
 - Juniper Networks Junos, and Screenos
@@ -89,7 +89,7 @@ Pre-requisites
 ==============
 
 Nety_ requires Python versions 3.2+ (We no longer support Python 2.x); the OS should not
-matter. If you want to run it under a Python virtualenv_, it's been heavily 
+matter. If you want to run it under a Python virtualenv_, it's been heavily
 tested in that environment as well.
 
 .. _Installation:
@@ -97,7 +97,7 @@ tested in that environment as well.
 Installation and Downloads
 ==========================
 
-The best way to get Nety is with setuptools_ or pip_.  If you 
+The best way to get Nety is with setuptools_ or pip_.  If you
 already have setuptools_, you can install as usual:
 
 ::
@@ -183,7 +183,7 @@ Click the image below for details; the current build status is:
 License and Copyright
 =====================
 
-Nety_ is licensed GPLv3_; 
+Nety_ is licensed GPLv3_;
 2016.
 
 
@@ -201,7 +201,7 @@ Special thanks to mpenning for his great CiscoConfParse_, Nety is a successor of
 
 .. _Python: http://python.org/
 
-.. _CiscoConfParse: https://github.com/mpenning/nety
+.. _CiscoConfParse: https://github.com/mpenning/CiscoConfParse
 
 .. _`pypy JIT`: http://pypy.org/
 
