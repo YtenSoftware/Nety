@@ -1,0 +1,10 @@
+stages:
+- build
+
+build:
+  only:
+    - master
+  stage: build
+  script:
+    - docker build --pull -t nety .
+    - docker run --rm -v'/home/netwrk/nety/:/usr/src/app/sphinx-doc/_build/html' nety
